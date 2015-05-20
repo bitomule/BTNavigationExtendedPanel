@@ -32,6 +32,11 @@ public class BTNavigationExtendedPanel: UIViewController {
     var viewContainer: UIView!
     
     
+    internal var buttonsHorizontalPadding:CGFloat = 5
+    internal var rowsPadding:CGFloat = 10
+    internal var lastRowPadding:CGFloat = 10
+    internal var fristRowPadding:CGFloat = 10
+    
     
     internal var startHeight:CGFloat = 0
     private var rowsCount = 0
@@ -86,7 +91,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     
     private func createViewContainer(){
-        viewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 1000))
+        viewContainer = UIView()
         viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
         viewContainer.clipsToBounds = true
         let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: viewContainer, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
@@ -97,6 +102,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         self.view.addConstraints([trailingConstraint,leadingConstraint,topSpaceConstraint])
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
+        println(viewContainer.bounds.width)
     }
     
     private func createRowsContainers(rowsCount:Int,container:UIView){
@@ -105,7 +111,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         for(var i=0;i<rowsCount;i++){
             lastAddedRow = createRow(container,previousRow:lastAddedRow,row:i)
         }
-        let bottomSpaceConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastAddedRow!, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+        let bottomSpaceConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastAddedRow!, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: lastRowPadding)
         container.addConstraint(bottomSpaceConstraint)
     }
     
@@ -114,14 +120,14 @@ public class BTNavigationExtendedPanel: UIViewController {
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         if let previousRow = previousRow{
-            let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: previousRow, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 20)
+            let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: previousRow, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: rowsPadding)
             container.addConstraint(topSpaceToPreviousRow)
         }else{
-            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10)
+            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: fristRowPadding)
             container.addConstraint(topSpaceToSuperview)
         }
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 10)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 10)
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
@@ -136,10 +142,10 @@ public class BTNavigationExtendedPanel: UIViewController {
         var lastButtonView:UIView?
         for(var i=0;i<buttons.count;i++){
             buttons[i].indexPath = BTButtonIndexPath(row: row, index: i)
-            buttons[i].createView(rowView, previousButton: lastButtonView)
+            buttons[i].createView(rowView,buttonPadding:buttonsHorizontalPadding, previousButton: lastButtonView)
             lastButtonView = buttons[i].view
         }
-        let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 20)
+        let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
 
         rowView.addConstraint(trailingConstraint)
     }
