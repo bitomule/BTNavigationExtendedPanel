@@ -12,17 +12,17 @@ public class BTButton:NSObject{
     var title:String
     var image:UIImage
     var enabledImage:UIImage?
-    var indexPath:NSIndexPath
+    var indexPath:BTButtonIndexPath
     var view:UIView!
     var imageView:UIImageView!
     var titleLabel:UILabel!
     var button:UIButton!
     private var on = false
     
-    public init (title:String,image:UIImage,indexPath:NSIndexPath,enabledImage:UIImage?=nil){
+    public init (title:String,image:UIImage,enabledImage:UIImage?=nil){
         self.title = title
         self.image = image
-        self.indexPath = indexPath
+        self.indexPath = BTButtonIndexPath(row: 0,index: 0)
         self.enabledImage = enabledImage
     }
     

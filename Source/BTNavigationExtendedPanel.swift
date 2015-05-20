@@ -8,6 +8,11 @@
 
 import UIKit
 
+public struct BTButtonIndexPath {
+    var row = 0
+    var index = 0
+}
+
 public class BTNavigationExtendedPanel: UIViewController {
     
     public class func show(presenter:UIViewController,buttonRows:[[BTButton]]){
@@ -38,15 +43,18 @@ public class BTNavigationExtendedPanel: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         createViewContainer()
+        addGestureRecognizers()
+        startHeight = viewContainer.bounds.height
+        setAnchorToTop()
+        matchNavigationBarColor()
+    }
+    
+    private func addGestureRecognizers(){
         let tapGesture = UITapGestureRecognizer(target: self, action: "viewTapped")
         self.view.addGestureRecognizer(tapGesture)
         
         let ignoreTapInContainer = UITapGestureRecognizer(target: self, action: "ignoreTapInContainer")
         viewContainer.addGestureRecognizer(ignoreTapInContainer)
-        
-        startHeight = viewContainer.bounds.height
-        setAnchorToTop()
-        matchNavigationBarColor()
     }
     
     func viewTapped(){
@@ -124,9 +132,10 @@ public class BTNavigationExtendedPanel: UIViewController {
         let buttons = self.buttonRows[row]
         assert(buttons.count > 0, "Can't create row without buttons")
         var lastButtonView:UIView?
-        for button in buttons{
-            button.createView(rowView, previousButton: lastButtonView)
-            lastButtonView = button.view
+        for(var i=0;i<buttons.count;i++){
+            buttons[i].indexPath = BTButtonIndexPath(row: row, index: i)
+            buttons[i].createView(rowView, previousButton: lastButtonView)
+            lastButtonView = buttons[i].view
         }
         let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 20)
 
