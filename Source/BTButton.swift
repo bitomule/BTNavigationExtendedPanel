@@ -44,7 +44,8 @@ public class BTButton:NSObject{
     
     // MARK: - View constructors
     
-    internal func createView(container:UIView,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont)->UIView{
+    internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont)->UIView{
+        self.panel = panel
         view = UIView()
         view.backgroundColor = UIColor.blackColor()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -111,5 +112,6 @@ public class BTButton:NSObject{
     
     func buttonPressed(){
         on == true ? turnOff() : turnOn()
+        panel.buttonPressed(indexPath)
     }
 }

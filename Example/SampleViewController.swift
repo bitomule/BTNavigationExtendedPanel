@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SampleViewController: UIViewController {
+class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
+    
+    var panel:BTNavigationExtendedPanel!
 
     @IBAction func showButtonPressed(sender: AnyObject) {
         
@@ -23,13 +25,24 @@ class SampleViewController: UIViewController {
         let row1 = BTRow(buttons:[button00,button01,button02],title:nil)
         let row2 = BTRow(buttons:[button10,button11,button12],title:"Row 2")
 
-        BTNavigationExtendedPanel.show(self,buttonRows:[row1,row2])
+        panel = BTNavigationExtendedPanel.show(self,delegate:self,buttonRows:[row1,row2])
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    // MARK: - Delegate
+    
+    func buttonPressed(index:BTButtonIndexPath){
+        println("Row:\(index.row), Index: \(index.index)")
+        if(index.row == 0 && index.index == 1){
+            panel.hide(callback: { () -> Void in
+                println("hidden")
+            })
+        }
     }
 
 }

@@ -12,6 +12,7 @@
 		419171621B0CBACB00ADA3EE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419171611B0CBACB00ADA3EE /* BTButton.swift */; };
 		419171661B0CC31900ADA3EE /* sampleimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 419171651B0CC31900ADA3EE /* sampleimage.png */; };
 		419171681B0CCFD200ADA3EE /* sampleimage_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 419171671B0CCFD200ADA3EE /* sampleimage_selected.png */; };
+		4191716A1B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419171691B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift */; };
 		41FA067C1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA067B1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift */; };
 		41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06861B0C741200F905C8 /* AppDelegate.swift */; };
 		41FA06901B0C741200F905C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06871B0C741200F905C8 /* LaunchScreen.xib */; };
@@ -37,6 +38,7 @@
 		419171611B0CBACB00ADA3EE /* BTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
 		419171651B0CC31900ADA3EE /* sampleimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleimage.png; sourceTree = "<group>"; };
 		419171671B0CCFD200ADA3EE /* sampleimage_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleimage_selected.png; sourceTree = "<group>"; };
+		419171691B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationExtendedPanelDelegate.swift; sourceTree = "<group>"; };
 		41FA065E1B0C73F000F905C8 /* BTNavigationExtendedPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTNavigationExtendedPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA06751B0C73F000F905C8 /* BTNavigationExtendedPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTNavigationExtendedPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA067A1B0C73F000F905C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */,
 				4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */,
 				419171611B0CBACB00ADA3EE /* BTButton.swift */,
+				419171691B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				419171601B0C9F4200ADA3EE /* BTTransitionManager.swift in Sources */,
 				4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */,
 				41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */,
+				4191716A1B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift in Sources */,
 				419171621B0CBACB00ADA3EE /* BTButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
