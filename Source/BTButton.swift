@@ -44,13 +44,14 @@ public class BTButton:NSObject{
     
     // MARK: - View constructors
     
-    internal func createView(container:UIView,buttonPadding:CGFloat,previousButton:UIView?)->UIView{
+    internal func createView(container:UIView,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont)->UIView{
         view = UIView()
         view.backgroundColor = UIColor.blackColor()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         self.imageView = createImage(view)
-        self.createTitleLabel(view,imageView:imageView)
+        self.titleLabel = createTitleLabel(view,imageView:imageView)
+        titleLabel.font = titleFont
         self.button = createButton(view)
         if let previousButton = previousButton{
             let leftConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousButton, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: buttonPadding)
@@ -102,9 +103,7 @@ public class BTButton:NSObject{
         let bottomConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: button, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
         let topConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: button, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
         container.addConstraints([leftConstraint,rightConstraint,bottomConstraint,topConstraint])
-        if enabledImage != nil{
-            button.addTarget(self, action: "buttonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        }
+        button.addTarget(self, action: "buttonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         return button
     }
     
