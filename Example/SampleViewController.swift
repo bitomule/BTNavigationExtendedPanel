@@ -19,8 +19,11 @@ class SampleViewController: UIViewController {
         let button10 = BTButton(title: "Button 4", image: UIImage(named: "sampleimage")!, enabledImage: UIImage(named: "sampleimage_selected")!)
         let button11 = BTButton(title: "Button 5", image: UIImage(named: "sampleimage")!, enabledImage: UIImage(named: "sampleimage_selected")!)
         let button12 = BTButton(title: "Button 6", image: UIImage(named: "sampleimage")!)
+        
+        let row1 = BTRow(buttons:[button00,button01,button02],title:nil)
+        let row2 = BTRow(buttons:[button10,button11,button12],title:"Row 2")
 
-        BTNavigationExtendedPanel.show(self,buttonRows:[[button00,button01,button02],[button10,button11,button12]])
+        BTNavigationExtendedPanel.show(self,buttonRows:[row1,row2])
     }
         
     override func viewDidLoad() {

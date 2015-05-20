@@ -13,9 +13,14 @@ public struct BTButtonIndexPath {
     var index = 0
 }
 
+public struct BTRow {
+    var buttons:[BTButton]
+    var title:String?
+}
+
 public class BTNavigationExtendedPanel: UIViewController {
     
-    public class func show(presenter:UIViewController,buttonRows:[[BTButton]]){
+    public class func show(presenter:UIViewController,buttonRows:[BTRow]){
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -40,7 +45,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     internal var startHeight:CGFloat = 0
     private var rowsCount = 0
-    private var buttonRows:[[BTButton]]!
+    private var buttonRows:[BTRow]!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -131,8 +136,8 @@ public class BTNavigationExtendedPanel: UIViewController {
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
-        if(row < self.buttonRows.count - 1){
-            return createSeparator(row, lastRow: view,container:container)
+        if(row + 1 < buttonRows.count && buttonRows[row + 1].title != nil){
+            return createSeparator(row + 1, lastRow: view,container:container)
         }
         container.setNeedsLayout()
         container.layoutIfNeeded()
@@ -140,7 +145,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     }
     
     private func createButtonsForRow(row:Int,rowView:UIView){
-        let buttons = self.buttonRows[row]
+        let buttons = self.buttonRows[row].buttons
         assert(buttons.count > 0, "Can't create row without buttons")
         var lastButtonView:UIView?
         for(var i=0;i<buttons.count;i++){
@@ -164,6 +169,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         container.addConstraints([topSpaceToPreviousRow,trailingConstraint,leadingConstraint])
         let leadingLine = createSeparatorLine(view, titleLabel: nil)
         let titleLabel = createSeparatorTitleLabel(view, previousLine: leadingLine)
+        titleLabel.text = buttonRows[row].title
         let trailingLine = createSeparatorLine(view, titleLabel: titleLabel)
         return view
     }
@@ -191,7 +197,6 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createSeparatorTitleLabel(container:UIView,previousLine:UIView)->UILabel{
         let label = UILabel()
-        label.text = "caca"
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(label)
         let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
