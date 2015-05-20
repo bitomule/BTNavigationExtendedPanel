@@ -111,10 +111,13 @@ public class BTNavigationExtendedPanel: UIViewController {
             let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10)
             container.addConstraint(topSpaceToSuperview)
         }
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 10)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 10)
-        container.addConstraints([trailingConstraint,leadingConstraint])
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 10)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 10)
+        let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
+        container.setNeedsLayout()
+        container.layoutIfNeeded()
         return view
     }
     
@@ -125,6 +128,9 @@ public class BTNavigationExtendedPanel: UIViewController {
             button.createView(rowView, previousButton: lastButtonView)
             lastButtonView = button.view
         }
+        let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 20)
+
+        rowView.addConstraint(trailingConstraint)
     }
     
     
