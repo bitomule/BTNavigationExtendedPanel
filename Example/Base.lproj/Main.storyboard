@@ -11,7 +11,7 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.95686274510000002" green="0.10980392160000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.95686274510000002" green="0.10980392160000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.23529411764705882" green="0.80000000000000004" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="6gk-wy-JkD" kind="relationship" relationship="rootViewController" id="3rc-xm-lfn"/>

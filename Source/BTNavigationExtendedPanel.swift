@@ -91,7 +91,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createRowsContainers(rowsCount:Int,container:UIView){
         var lastAddedRow:UIView?
-        assert(rowsCount >= 1, "Can't create Panel without rows")
+        assert(rowsCount > 0, "Can't create Panel without rows")
         for(var i=0;i<rowsCount;i++){
             lastAddedRow = createRow(container,previousRow:lastAddedRow,row:i)
         }
@@ -101,7 +101,6 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createRow(container:UIView,previousRow:UIView?,row:Int)->UIView{
         let view = UIView()
-        view.backgroundColor = UIColor.yellowColor()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         if let previousRow = previousRow{
@@ -123,6 +122,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createButtonsForRow(row:Int,rowView:UIView){
         let buttons = self.buttonRows[row]
+        assert(buttons.count > 0, "Can't create row without buttons")
         var lastButtonView:UIView?
         for button in buttons{
             button.createView(rowView, previousButton: lastButtonView)

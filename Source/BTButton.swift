@@ -26,6 +26,20 @@ public class BTButton:NSObject{
         self.enabledImage = enabledImage
     }
     
+    internal func turnOn(){
+        if let enabledImage = enabledImage{
+            on = true
+            imageView.image = enabledImage
+        }
+    }
+    
+    internal func turnOff(){
+        on = false
+        imageView.image = image
+    }
+    
+    // MARK: - View constructors
+    
     internal func createView(container:UIView,previousButton:UIView?)->UIView{
         view = UIView()
         view.backgroundColor = UIColor.blackColor()
@@ -84,6 +98,15 @@ public class BTButton:NSObject{
         let bottomConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: button, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
         let topConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: button, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
         container.addConstraints([leftConstraint,rightConstraint,bottomConstraint,topConstraint])
+        if enabledImage != nil{
+            button.addTarget(self, action: "buttonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        }
         return button
+    }
+    
+    // MARK: - Button target
+    
+    func buttonPressed(){
+        on == true ? turnOff() : turnOn()
     }
 }
