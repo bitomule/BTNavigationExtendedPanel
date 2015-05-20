@@ -71,8 +71,7 @@ class BTTransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIVie
     
     // MARK: UIViewControllerTransitioningDelegate protocol methods
     
-    // return the animataor when presenting a viewcontroller
-    // remember that an animator (or animation controller) is any object that aheres to the UIViewControllerAnimatedTransitioning protocol
+    // return the animator when presenting a viewcontroller
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.presenting = true
         return self

@@ -10,18 +10,18 @@ import UIKit
 
 public class BTNavigationExtendedPanel: UIViewController {
     
-    public class func show(presenter:UIViewController){
+    public class func show(presenter:UIViewController,buttonRows:[[BTButton]]){
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
             vc.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
             vc.transitioningDelegate = vc.manager
             vc.presenterNavigationController = navigationController
+            vc.rowsCount = buttonRows.count
+            vc.buttonRows = buttonRows
             navigationController.presentViewController(vc, animated: true, completion: nil)
         }
     }
-    
-    
     
     let manager = BTTransitionManager()
     
@@ -31,7 +31,9 @@ public class BTNavigationExtendedPanel: UIViewController {
     var bottomButtonsContainer: UIView!
     var presenterNavigationController:UINavigationController!
     
-    var startHeight:CGFloat = 0
+    internal var startHeight:CGFloat = 0
+    private var rowsCount = 0
+    private var buttonRows:[[BTButton]]!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +67,6 @@ public class BTNavigationExtendedPanel: UIViewController {
     }
     
     private func matchNavigationBarColor(){
-        
-        func colorComponentTranslucent(component:Int) -> Int{
-            return (component - 40) / (1 - 40 / 255)
-        }
-        
         if(presenterNavigationController.navigationBar.translucent){
             viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
             println("Colors won't match as navigationBar is translucent")
@@ -86,7 +83,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         let leadingConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
         topSpaceConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
         self.view.addSubview(viewContainer)
-        createRowsContainers(3,container: viewContainer)
+        createRowsContainers(rowsCount,container: viewContainer)
         self.view.addConstraints([trailingConstraint,leadingConstraint,topSpaceConstraint])
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
@@ -96,13 +93,13 @@ public class BTNavigationExtendedPanel: UIViewController {
         var lastAddedRow:UIView?
         assert(rowsCount >= 1, "Can't create Panel without rows")
         for(var i=0;i<rowsCount;i++){
-            lastAddedRow = createRow(container,previousRow:lastAddedRow)
+            lastAddedRow = createRow(container,previousRow:lastAddedRow,row:i)
         }
         let bottomSpaceConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastAddedRow!, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
         container.addConstraint(bottomSpaceConstraint)
     }
     
-    private func createRow(container:UIView,previousRow:UIView?)->UIView{
+    private func createRow(container:UIView,previousRow:UIView?,row:Int)->UIView{
         let view = UIView()
         view.backgroundColor = UIColor.yellowColor()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -116,10 +113,18 @@ public class BTNavigationExtendedPanel: UIViewController {
         }
         let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 10)
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 10)
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 100)
         container.addConstraints([trailingConstraint,leadingConstraint])
-        view.addConstraint(heightConstraint)
+        createButtonsForRow(row,rowView:view)
         return view
+    }
+    
+    private func createButtonsForRow(row:Int,rowView:UIView){
+        let buttons = self.buttonRows[row]
+        var lastButtonView:UIView?
+        for button in buttons{
+            button.createView(rowView, previousButton: lastButtonView)
+            lastButtonView = button.view
+        }
     }
     
     

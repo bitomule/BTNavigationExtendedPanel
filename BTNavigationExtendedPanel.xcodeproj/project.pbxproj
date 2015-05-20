@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */; };
 		419171601B0C9F4200ADA3EE /* BTTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */; };
+		419171621B0CBACB00ADA3EE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419171611B0CBACB00ADA3EE /* BTButton.swift */; };
+		419171661B0CC31900ADA3EE /* sampleimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 419171651B0CC31900ADA3EE /* sampleimage.png */; };
 		41FA067C1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA067B1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift */; };
 		41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06861B0C741200F905C8 /* AppDelegate.swift */; };
 		41FA06901B0C741200F905C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06871B0C741200F905C8 /* LaunchScreen.xib */; };
 		41FA06911B0C741200F905C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06891B0C741200F905C8 /* Main.storyboard */; };
-		41FA06921B0C741200F905C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA068B1B0C741200F905C8 /* DetailViewController.swift */; };
 		41FA06931B0C741200F905C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FA068C1B0C741200F905C8 /* Images.xcassets */; };
 		41FA06941B0C741200F905C8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41FA068D1B0C741200F905C8 /* Info.plist */; };
 		41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06971B0C74B500F905C8 /* SampleViewController.swift */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationExtendedPanel.swift; sourceTree = "<group>"; };
 		4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTransitionManager.swift; sourceTree = "<group>"; };
+		419171611B0CBACB00ADA3EE /* BTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
+		419171651B0CC31900ADA3EE /* sampleimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleimage.png; sourceTree = "<group>"; };
 		41FA065E1B0C73F000F905C8 /* BTNavigationExtendedPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTNavigationExtendedPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA06751B0C73F000F905C8 /* BTNavigationExtendedPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTNavigationExtendedPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA067A1B0C73F000F905C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,7 +42,6 @@
 		41FA06861B0C741200F905C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41FA06881B0C741200F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		41FA068A1B0C741200F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		41FA068B1B0C741200F905C8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		41FA068C1B0C741200F905C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		41FA068D1B0C741200F905C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41FA06971B0C74B500F905C8 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
@@ -102,10 +104,10 @@
 		41FA06851B0C741200F905C8 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				419171651B0CC31900ADA3EE /* sampleimage.png */,
 				41FA06861B0C741200F905C8 /* AppDelegate.swift */,
 				41FA06871B0C741200F905C8 /* LaunchScreen.xib */,
 				41FA06891B0C741200F905C8 /* Main.storyboard */,
-				41FA068B1B0C741200F905C8 /* DetailViewController.swift */,
 				41FA068C1B0C741200F905C8 /* Images.xcassets */,
 				41FA068D1B0C741200F905C8 /* Info.plist */,
 				41FA06971B0C74B500F905C8 /* SampleViewController.swift */,
@@ -118,6 +120,7 @@
 			children = (
 				4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */,
 				4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */,
+				419171611B0CBACB00ADA3EE /* BTButton.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				41FA06931B0C741200F905C8 /* Images.xcassets in Resources */,
 				41FA06901B0C741200F905C8 /* LaunchScreen.xib in Resources */,
 				41FA06911B0C741200F905C8 /* Main.storyboard in Resources */,
+				419171661B0CC31900ADA3EE /* sampleimage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */,
-				41FA06921B0C741200F905C8 /* DetailViewController.swift in Sources */,
 				419171601B0C9F4200ADA3EE /* BTTransitionManager.swift in Sources */,
 				4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */,
 				41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */,
+				419171621B0CBACB00ADA3EE /* BTButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
