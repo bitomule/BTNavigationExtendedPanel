@@ -11,7 +11,7 @@ import UIKit
 class SampleViewController: UIViewController {
 
     @IBAction func showButtonPressed(sender: AnyObject) {
-        ModalExampleViewController.show(self)
+        BTNavigationExtendedPanel.show(self)
     }
         
     override func viewDidLoad() {

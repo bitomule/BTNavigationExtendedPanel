@@ -1,5 +1,5 @@
 //
-//  TransitionManager.swift
+//  BTTransitionManager.swift
 //  BTNavigationExtendedPanel
 //
 //  Created by David Collado Sela on 20/5/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+class BTTransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     
     private var presenting = false
     var screens : (from:UIViewController, to:UIViewController)!
@@ -27,7 +27,7 @@ class TransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewC
         
         // assign references to our menu view controller and the 'bottom' view controller from the tuple
         // remember that our menuViewController will alternate between the from and to view controller depending if we're presenting or dismissing
-        let menuViewController = !self.presenting ? screens.from as! ModalExampleViewController : screens.to as! ModalExampleViewController
+        let menuViewController = !self.presenting ? screens.from as! BTNavigationExtendedPanel : screens.to as! BTNavigationExtendedPanel
         
         // perform the animation!
         
@@ -39,7 +39,7 @@ class TransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewC
         }
     }
     
-    func offStageMenuController(menuViewController:ModalExampleViewController){
+    func offStageMenuController(menuViewController:BTNavigationExtendedPanel){
         menuViewController.viewContainer.layer.removeAllAnimations()
         let animation = CABasicAnimation(keyPath: "bounds.size.height")
         animation.duration = self.transitionDuration(transitionContext)
@@ -52,7 +52,7 @@ class TransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewC
         menuViewController.viewContainer.layer.addAnimation(animation, forKey: "scaleUp")
     }
     
-    func onStageMenuController(menuViewController:ModalExampleViewController){
+    func onStageMenuController(menuViewController:BTNavigationExtendedPanel){
         let animation = CABasicAnimation(keyPath: "bounds.size.height")
         animation.duration = self.transitionDuration(transitionContext)
         animation.fromValue = 0
@@ -91,6 +91,4 @@ class TransitionManager: NSObject,UIViewControllerAnimatedTransitioning, UIViewC
     }
     
 }
-
-
 

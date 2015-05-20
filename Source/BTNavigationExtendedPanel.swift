@@ -23,9 +23,9 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     
     
-    let manager = TransitionManager()
+    let manager = BTTransitionManager()
     
-    @IBOutlet weak var topSpaceConstraint: NSLayoutConstraint!
+    var topSpaceConstraint: NSLayoutConstraint!
     var viewContainer: UIView!
     var topButtonsContainer: UIView!
     var bottomButtonsContainer: UIView!
@@ -35,7 +35,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+        createViewContainer()
         let tapGesture = UITapGestureRecognizer(target: self, action: "viewTapped")
         self.view.addGestureRecognizer(tapGesture)
         
@@ -59,18 +59,67 @@ public class BTNavigationExtendedPanel: UIViewController {
         viewContainer.layer.anchorPoint = CGPointMake(0.5, 0);
         topSpaceConstraint.constant = startHeight * -0.5
         topSpaceConstraint.constant = topSpaceConstraint.constant + presenterNavigationController.navigationBar.bounds.height
+        if(!UIApplication.sharedApplication().statusBarHidden){
+           topSpaceConstraint.constant = topSpaceConstraint.constant + UIApplication.sharedApplication().statusBarFrame.size.height
+        }
     }
     
     private func matchNavigationBarColor(){
-        viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
+        
+        func colorComponentTranslucent(component:Int) -> Int{
+            return (component - 40) / (1 - 40 / 255)
+        }
+        
+        if(presenterNavigationController.navigationBar.translucent){
+            viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
+            println("Colors won't match as navigationBar is translucent")
+        }else{
+            viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
+        }
     }
     
     private func createViewContainer(){
-        viewContainer = UIView()
+        viewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 1000))
+        viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
+        viewContainer.clipsToBounds = true
         let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: viewContainer, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
-        let leadingConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+        topSpaceConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
         self.view.addSubview(viewContainer)
-        self.view.addConstraints([trailingConstraint])
+        createRowsContainers(3,container: viewContainer)
+        self.view.addConstraints([trailingConstraint,leadingConstraint,topSpaceConstraint])
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+    }
+    
+    private func createRowsContainers(rowsCount:Int,container:UIView){
+        var lastAddedRow:UIView?
+        assert(rowsCount >= 1, "Can't create Panel without rows")
+        for(var i=0;i<rowsCount;i++){
+            lastAddedRow = createRow(container,previousRow:lastAddedRow)
+        }
+        let bottomSpaceConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastAddedRow!, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 10)
+        container.addConstraint(bottomSpaceConstraint)
+    }
+    
+    private func createRow(container:UIView,previousRow:UIView?)->UIView{
+        let view = UIView()
+        view.backgroundColor = UIColor.yellowColor()
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        container.addSubview(view)
+        if let previousRow = previousRow{
+            let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: previousRow, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 20)
+            container.addConstraint(topSpaceToPreviousRow)
+        }else{
+            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 10)
+            container.addConstraint(topSpaceToSuperview)
+        }
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 10)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 10)
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 100)
+        container.addConstraints([trailingConstraint,leadingConstraint])
+        view.addConstraint(heightConstraint)
+        return view
     }
     
     
