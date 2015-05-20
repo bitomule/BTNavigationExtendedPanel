@@ -29,12 +29,9 @@ public class BTNavigationExtendedPanel: UIViewController {
     }
     
     let manager = BTTransitionManager()
-    
-    var topSpaceConstraint: NSLayoutConstraint!
     var viewContainer: UIView!
-    var topButtonsContainer: UIView!
-    var bottomButtonsContainer: UIView!
-    var presenterNavigationController:UINavigationController!
+    
+    
     
     internal var startHeight:CGFloat = 0
     private var rowsCount = 0
@@ -65,6 +62,8 @@ public class BTNavigationExtendedPanel: UIViewController {
         
     }
     
+    private var topSpaceConstraint: NSLayoutConstraint!
+    
     private func setAnchorToTop(){
         viewContainer.layer.anchorPoint = CGPointMake(0.5, 0);
         topSpaceConstraint.constant = startHeight * -0.5
@@ -74,6 +73,8 @@ public class BTNavigationExtendedPanel: UIViewController {
         }
     }
     
+    private var presenterNavigationController:UINavigationController!
+    
     private func matchNavigationBarColor(){
         if(presenterNavigationController.navigationBar.translucent){
             viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
@@ -82,6 +83,7 @@ public class BTNavigationExtendedPanel: UIViewController {
             viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
         }
     }
+    
     
     private func createViewContainer(){
         viewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 1000))
