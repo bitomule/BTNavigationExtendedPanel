@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41FA06641B0C73F000F905C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06631B0C73F000F905C8 /* AppDelegate.swift */; };
-		41FA06661B0C73F000F905C8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06651B0C73F000F905C8 /* MasterViewController.swift */; };
-		41FA06681B0C73F000F905C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06671B0C73F000F905C8 /* DetailViewController.swift */; };
-		41FA066B1B0C73F000F905C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06691B0C73F000F905C8 /* Main.storyboard */; };
-		41FA066D1B0C73F000F905C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FA066C1B0C73F000F905C8 /* Images.xcassets */; };
-		41FA06701B0C73F000F905C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FA066E1B0C73F000F905C8 /* LaunchScreen.xib */; };
+		4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */; };
 		41FA067C1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA067B1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift */; };
+		41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06861B0C741200F905C8 /* AppDelegate.swift */; };
+		41FA06901B0C741200F905C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06871B0C741200F905C8 /* LaunchScreen.xib */; };
+		41FA06911B0C741200F905C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FA06891B0C741200F905C8 /* Main.storyboard */; };
+		41FA06921B0C741200F905C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA068B1B0C741200F905C8 /* DetailViewController.swift */; };
+		41FA06931B0C741200F905C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FA068C1B0C741200F905C8 /* Images.xcassets */; };
+		41FA06941B0C741200F905C8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41FA068D1B0C741200F905C8 /* Info.plist */; };
+		41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06971B0C74B500F905C8 /* SampleViewController.swift */; };
+		41FA069A1B0C76AE00F905C8 /* ModalExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA06991B0C76AE00F905C8 /* ModalExampleViewController.swift */; };
+		41FA069C1B0C797200F905C8 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA069B1B0C797200F905C8 /* TransitionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +31,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationExtendedPanel.swift; sourceTree = "<group>"; };
 		41FA065E1B0C73F000F905C8 /* BTNavigationExtendedPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTNavigationExtendedPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		41FA06621B0C73F000F905C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41FA06631B0C73F000F905C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41FA06651B0C73F000F905C8 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		41FA06671B0C73F000F905C8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		41FA066A1B0C73F000F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		41FA066C1B0C73F000F905C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		41FA066F1B0C73F000F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		41FA06751B0C73F000F905C8 /* BTNavigationExtendedPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTNavigationExtendedPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FA067A1B0C73F000F905C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41FA067B1B0C73F000F905C8 /* BTNavigationExtendedPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTNavigationExtendedPanelTests.swift; sourceTree = "<group>"; };
+		41FA06861B0C741200F905C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		41FA06881B0C741200F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		41FA068A1B0C741200F905C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		41FA068B1B0C741200F905C8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		41FA068C1B0C741200F905C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		41FA068D1B0C741200F905C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41FA06971B0C74B500F905C8 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		41FA06991B0C76AE00F905C8 /* ModalExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalExampleViewController.swift; sourceTree = "<group>"; };
+		41FA069B1B0C797200F905C8 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +68,8 @@
 		41FA06551B0C73F000F905C8 = {
 			isa = PBXGroup;
 			children = (
-				41FA06601B0C73F000F905C8 /* BTNavigationExtendedPanel */,
+				41FA06961B0C741700F905C8 /* Source */,
+				41FA06851B0C741200F905C8 /* Example */,
 				41FA06781B0C73F000F905C8 /* BTNavigationExtendedPanelTests */,
 				41FA065F1B0C73F000F905C8 /* Products */,
 			);
@@ -74,28 +82,6 @@
 				41FA06751B0C73F000F905C8 /* BTNavigationExtendedPanelTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		41FA06601B0C73F000F905C8 /* BTNavigationExtendedPanel */ = {
-			isa = PBXGroup;
-			children = (
-				41FA06631B0C73F000F905C8 /* AppDelegate.swift */,
-				41FA06651B0C73F000F905C8 /* MasterViewController.swift */,
-				41FA06671B0C73F000F905C8 /* DetailViewController.swift */,
-				41FA06691B0C73F000F905C8 /* Main.storyboard */,
-				41FA066C1B0C73F000F905C8 /* Images.xcassets */,
-				41FA066E1B0C73F000F905C8 /* LaunchScreen.xib */,
-				41FA06611B0C73F000F905C8 /* Supporting Files */,
-			);
-			path = BTNavigationExtendedPanel;
-			sourceTree = "<group>";
-		};
-		41FA06611B0C73F000F905C8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				41FA06621B0C73F000F905C8 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		41FA06781B0C73F000F905C8 /* BTNavigationExtendedPanelTests */ = {
@@ -113,6 +99,30 @@
 				41FA067A1B0C73F000F905C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41FA06851B0C741200F905C8 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				41FA06861B0C741200F905C8 /* AppDelegate.swift */,
+				41FA06871B0C741200F905C8 /* LaunchScreen.xib */,
+				41FA06891B0C741200F905C8 /* Main.storyboard */,
+				41FA068B1B0C741200F905C8 /* DetailViewController.swift */,
+				41FA068C1B0C741200F905C8 /* Images.xcassets */,
+				41FA068D1B0C741200F905C8 /* Info.plist */,
+				41FA06971B0C74B500F905C8 /* SampleViewController.swift */,
+				41FA06991B0C76AE00F905C8 /* ModalExampleViewController.swift */,
+				41FA069B1B0C797200F905C8 /* TransitionManager.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		41FA06961B0C741700F905C8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +205,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41FA066B1B0C73F000F905C8 /* Main.storyboard in Resources */,
-				41FA06701B0C73F000F905C8 /* LaunchScreen.xib in Resources */,
-				41FA066D1B0C73F000F905C8 /* Images.xcassets in Resources */,
+				41FA06941B0C741200F905C8 /* Info.plist in Resources */,
+				41FA06931B0C741200F905C8 /* Images.xcassets in Resources */,
+				41FA06901B0C741200F905C8 /* LaunchScreen.xib in Resources */,
+				41FA06911B0C741200F905C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +226,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41FA06681B0C73F000F905C8 /* DetailViewController.swift in Sources */,
-				41FA06661B0C73F000F905C8 /* MasterViewController.swift in Sources */,
-				41FA06641B0C73F000F905C8 /* AppDelegate.swift in Sources */,
+				41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */,
+				41FA069C1B0C797200F905C8 /* TransitionManager.swift in Sources */,
+				41FA06921B0C741200F905C8 /* DetailViewController.swift in Sources */,
+				4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */,
+				41FA069A1B0C76AE00F905C8 /* ModalExampleViewController.swift in Sources */,
+				41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,20 +254,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		41FA06691B0C73F000F905C8 /* Main.storyboard */ = {
+		41FA06871B0C741200F905C8 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				41FA066A1B0C73F000F905C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		41FA066E1B0C73F000F905C8 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				41FA066F1B0C73F000F905C8 /* Base */,
+				41FA06881B0C741200F905C8 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		41FA06891B0C741200F905C8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41FA068A1B0C741200F905C8 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -346,7 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BTNavigationExtendedPanel/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,7 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = BTNavigationExtendedPanel/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -415,6 +429,7 @@
 				41FA06811B0C73F000F905C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41FA06821B0C73F000F905C8 /* Build configuration list for PBXNativeTarget "BTNavigationExtendedPanelTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +438,7 @@
 				41FA06841B0C73F000F905C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
