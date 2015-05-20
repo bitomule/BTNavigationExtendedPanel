@@ -19,6 +19,7 @@ class SampleViewController: UIViewController {
         let button10 = BTButton(title: "Button 4", image: UIImage(named: "sampleimage")!, enabledImage: UIImage(named: "sampleimage_selected")!)
         let button11 = BTButton(title: "Button 5", image: UIImage(named: "sampleimage")!, enabledImage: UIImage(named: "sampleimage_selected")!)
         let button12 = BTButton(title: "Button 6", image: UIImage(named: "sampleimage")!)
+
         BTNavigationExtendedPanel.show(self,buttonRows:[[button00,button01,button02],[button10,button11,button12]])
     }
         

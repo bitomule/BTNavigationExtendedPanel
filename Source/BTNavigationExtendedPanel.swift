@@ -131,6 +131,9 @@ public class BTNavigationExtendedPanel: UIViewController {
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
+        if(row < self.buttonRows.count - 1){
+            return createSeparator(row, lastRow: view,container:container)
+        }
         container.setNeedsLayout()
         container.layoutIfNeeded()
         return view
@@ -148,6 +151,56 @@ public class BTNavigationExtendedPanel: UIViewController {
         let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
 
         rowView.addConstraint(trailingConstraint)
+    }
+    
+    private func createSeparator(row:Int,lastRow:UIView,container:UIView)->UIView{
+        let view = UIView()
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        container.addSubview(view)
+        let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastRow, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: rowsPadding)
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 50)
+        container.addConstraints([topSpaceToPreviousRow,trailingConstraint,leadingConstraint])
+        let leadingLine = createSeparatorLine(view, titleLabel: nil)
+        let titleLabel = createSeparatorTitleLabel(view, previousLine: leadingLine)
+        let trailingLine = createSeparatorLine(view, titleLabel: titleLabel)
+        return view
+    }
+    
+    private func createSeparatorLine(container:UIView,titleLabel:UIView?)->UIView{
+        let view = UIView()
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.backgroundColor = UIColor.whiteColor()
+        container.addSubview(view)
+        if let titleLabel = titleLabel{
+            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+            let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+            container.addConstraints([leadingConstraint,trailingConstraint])
+        }else{
+            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
+            container.addConstraint(leadingConstraint)
+        }
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 1)
+        let centerYConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        
+        view.addConstraint(heightConstraint)
+        container.addConstraints([centerYConstraint])
+        return view
+    }
+    
+    private func createSeparatorTitleLabel(container:UIView,previousLine:UIView)->UILabel{
+        let label = UILabel()
+        label.text = "caca"
+        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        container.addSubview(label)
+        let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
+        let bottomConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 5)
+        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousLine, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+        let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        let centerYConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        container.addConstraints([topConstraint,bottomConstraint,leadingConstraint,centerXConstraint,centerYConstraint])
+        return label
     }
     
     
