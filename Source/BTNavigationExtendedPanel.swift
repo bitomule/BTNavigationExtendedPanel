@@ -20,7 +20,7 @@ public struct BTRow {
 
 public class BTNavigationExtendedPanel: UIViewController {
     
-    public class func show(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15))-> BTNavigationExtendedPanel?{
+    public class func show(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -31,6 +31,9 @@ public class BTNavigationExtendedPanel: UIViewController {
             vc.buttonRows = buttonRows
             vc.buttonsFont = buttonsFont
             vc.separatorsFont = separatorsFont
+            vc.buttonsTitleColor = buttonsTitleColor
+            vc.separatorTitleColor = separatorTitleColor
+            vc.separatorColor = separatorColor
             vc.delegate = delegate
             navigationController.presentViewController(vc, animated: true, completion: nil)
             return vc
@@ -57,6 +60,9 @@ public class BTNavigationExtendedPanel: UIViewController {
     private var buttonRows:[BTRow]!
     private var buttonsFont:UIFont!
     private var separatorsFont:UIFont!
+    private var buttonsTitleColor:UIColor!
+    private var separatorTitleColor:UIColor!
+    private var separatorColor:UIColor!
     
     private var delegate:BTNavigationExtendedPanelDelegate!
     
@@ -165,7 +171,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         var lastButtonView:UIView?
         for(var i=0;i<buttons.count;i++){
             buttons[i].indexPath = BTButtonIndexPath(row: row, index: i)
-            buttons[i].createView(rowView,panel:self,buttonPadding:buttonsHorizontalPadding, previousButton: lastButtonView,titleFont:buttonsFont)
+            buttons[i].createView(rowView,panel:self,buttonPadding:buttonsHorizontalPadding, previousButton: lastButtonView,titleFont:buttonsFont,titleColor:buttonsTitleColor)
             lastButtonView = buttons[i].view
         }
         let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
@@ -192,7 +198,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     private func createSeparatorLine(container:UIView,titleLabel:UIView?)->UIView{
         let view = UIView()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = separatorColor
         container.addSubview(view)
         if let titleLabel = titleLabel{
             let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
@@ -213,6 +219,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     private func createSeparatorTitleLabel(container:UIView,previousLine:UIView)->UILabel{
         let label = UILabel()
         label.font = separatorsFont
+        label.textColor = separatorTitleColor
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(label)
         let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)

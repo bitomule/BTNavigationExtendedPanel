@@ -44,7 +44,7 @@ public class BTButton:NSObject{
     
     // MARK: - View constructors
     
-    internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont)->UIView{
+    internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont,titleColor:UIColor)->UIView{
         self.panel = panel
         view = UIView()
         view.backgroundColor = UIColor.blackColor()
@@ -53,6 +53,7 @@ public class BTButton:NSObject{
         self.imageView = createImage(view)
         self.titleLabel = createTitleLabel(view,imageView:imageView)
         titleLabel.font = titleFont
+        titleLabel.textColor = titleColor
         self.button = createButton(view)
         if let previousButton = previousButton{
             let leftConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousButton, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: buttonPadding)

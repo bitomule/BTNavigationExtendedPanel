@@ -25,7 +25,7 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
         let row1 = BTRow(buttons:[button00,button01,button02],title:nil)
         let row2 = BTRow(buttons:[button10,button11,button12],title:"Row 2")
 
-        panel = BTNavigationExtendedPanel.show(self,delegate:self,buttonRows:[row1,row2])
+        panel = BTNavigationExtendedPanel.show(self, delegate: self, buttonRows: [row1,row2], buttonsTitleColor: UIColor.whiteColor(), separatorTitleColor: UIColor.whiteColor(), separatorColor: UIColor.whiteColor())
     }
         
     override func viewDidLoad() {
