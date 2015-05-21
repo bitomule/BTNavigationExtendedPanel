@@ -24,7 +24,7 @@ public struct BTRow {
 
 public class BTNavigationExtendedPanel: UIViewController {
     
-    public class func create(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsHorizontalPadding:CGFloat = 5,buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
+    public class func create(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsHorizontalPadding:CGFloat = 5,buttonImagesHorizontalPadding:CGFloat = 5,buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -62,6 +62,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     internal var rowsPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
     internal var firstRowPadding:CGFloat = 10
+    internal var imagesPadding:CGFloat = 5
     
     
     internal var startHeight:CGFloat = 0
@@ -180,7 +181,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         var lastButtonView:UIView?
         for(var i=0;i<buttons.count;i++){
             buttons[i].indexPath = BTButtonIndexPath(row: row, index: i)
-            buttons[i].createView(rowView,panel:self,buttonPadding:buttonsHorizontalPadding, previousButton: lastButtonView,titleFont:buttonsFont,titleColor:buttonsTitleColor)
+            buttons[i].createView(rowView,panel:self,buttonPadding:buttonsHorizontalPadding,imagesPadding:imagesPadding, previousButton: lastButtonView,titleFont:buttonsFont,titleColor:buttonsTitleColor)
             lastButtonView = buttons[i].view
         }
         let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)

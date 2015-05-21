@@ -40,12 +40,13 @@ public class BTButton:NSObject{
     }
     
     internal var titlePadding:CGFloat = 5
-    internal var imagePadding:CGFloat = 5
+    internal var imagesPadding:CGFloat = 5
     
     // MARK: - View constructors
     
-    internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont,titleColor:UIColor)->UIView{
+    internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,imagesPadding:CGFloat,previousButton:UIView?,titleFont:UIFont,titleColor:UIColor)->UIView{
         self.panel = panel
+        self.imagesPadding = imagesPadding
         view = UIView()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
@@ -71,9 +72,9 @@ public class BTButton:NSObject{
         let imageView = UIImageView(image: image)
         imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(imageView)
-        let leftConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: imagePadding)
-        let rightConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: imagePadding)
-        let topConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: imagePadding)
+        let leftConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: imagesPadding)
+        let rightConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: imagesPadding)
+        let topConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: imagesPadding)
         let widthConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: image.size.width)
         let heightConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: image.size.height)
         container.addConstraints([leftConstraint,rightConstraint,topConstraint,widthConstraint,heightConstraint])
