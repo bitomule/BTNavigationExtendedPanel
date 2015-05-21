@@ -61,7 +61,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     internal var buttonsHorizontalPadding:CGFloat = 5
     internal var rowsPadding:CGFloat = 0
-    internal var rowsHorizontalMargin:CGFloat = 10
+    internal var rowsHorizontalMargin:CGFloat = 13
     internal var titleHorizontalmargin:CGFloat = 5
     internal var separatorTopPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
@@ -238,7 +238,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         container.addSubview(label)
         let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
         let bottomConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 5)
-        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousLine, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousLine, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: titleHorizontalmargin)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         let centerYConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
         container.addConstraints([topConstraint,bottomConstraint,leadingConstraint,centerXConstraint,centerYConstraint])
