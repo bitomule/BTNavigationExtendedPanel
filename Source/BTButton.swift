@@ -120,7 +120,7 @@ public class BTButton:NSObject{
     // MARK: - Button target
     
     func buttonPressed(){
-        if(!togglesImage){
+        if(togglesImage){
             on == true ? turnOff() : turnOn()
         }
         panel.buttonPressed(indexPath)
