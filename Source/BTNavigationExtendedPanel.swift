@@ -62,6 +62,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     internal var buttonsHorizontalPadding:CGFloat = 5
     internal var rowsPadding:CGFloat = 0
     internal var rowsHorizontalMargin:CGFloat = 10
+    internal var titleHorizontalmargin:CGFloat = 5
     internal var separatorTopPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
     internal var firstRowPadding:CGFloat = 10
@@ -197,8 +198,8 @@ public class BTNavigationExtendedPanel: UIViewController {
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastViewAdded, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: separatorTopPadding)
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 50)
         container.addConstraints([topSpaceToPreviousRow,trailingConstraint,leadingConstraint])
         let leadingLine = createSeparatorLine(view, titleLabel: nil)
@@ -214,11 +215,11 @@ public class BTNavigationExtendedPanel: UIViewController {
         view.backgroundColor = separatorColor
         container.addSubview(view)
         if let titleLabel = titleLabel{
-            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
-            let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
+            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: titleHorizontalmargin)
+            let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
             container.addConstraints([leadingConstraint,trailingConstraint])
         }else{
-            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
+            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
             container.addConstraint(leadingConstraint)
         }
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 1)
