@@ -32,17 +32,24 @@ public class BTButton:NSObject{
     internal func turnOn(){
         if let enabledImage = enabledImage{
             on = true
-            imageView.image = enabledImage
+            if let imageView = imageView{
+                imageView.image = enabledImage
+            }
         }
     }
     
     internal func turnOff(){
         on = false
-        imageView.image = image
+        if let imageView = imageView{
+            imageView.image = image
+        }
     }
     
     internal func updateTitle(title:String){
-        self.titleLabel.text = title
+        self.title = title
+        if let titleLabel = titleLabel{
+            titleLabel.text = title
+        }
     }
     
     internal var titlePadding:CGFloat = 5
@@ -76,7 +83,12 @@ public class BTButton:NSObject{
     }
     
     private func createImage(container:UIView)->UIImageView{
-        let imageView = UIImageView(image: image)
+        let imageView:UIImageView
+        if (on && enabledImage != nil){
+            imageView = UIImageView(image: enabledImage!)
+        }else{
+            imageView = UIImageView(image: image)
+        }
         imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(imageView)
         let leftConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: imagesPadding)
