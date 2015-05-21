@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "BTNavigationExtendedPanel"
-  s.version      = "0.1.0"
+  s.version      = "0.2.1"
   s.summary      = "Custom UIViewController displayed under navigation bar."
 
   s.description  = <<-DESC
@@ -30,9 +30,10 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/bitomule/BTNavigationExtendedPanel.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/bitomule/BTNavigationExtendedPanel.git", :tag => "0.2.1" }
 
   s.source_files = 'Source/*.swift'
+  s.dependency 'SocketRocket', '~> 0.1.0'
   s.requires_arc = true
 
 end

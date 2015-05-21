@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EasyConstraints
 
 public struct BTButtonIndexPath {
     public var row = 0
@@ -152,9 +153,9 @@ public class BTNavigationExtendedPanel: UIViewController {
         viewContainer = UIView()
         viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
         viewContainer.clipsToBounds = true
-        let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: viewContainer, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
-        let leadingConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
-        topSpaceConstraint = NSLayoutConstraint(item: viewContainer, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+        let trailingConstraint = self.view<>>(viewContainer,0)
+        let leadingConstraint = self.view<<>(viewContainer,0)
+        topSpaceConstraint = viewContainer<^>(self.view,0)
         self.view.addSubview(viewContainer)
         createRowsContainers(rowsCount,container: viewContainer)
         self.view.addConstraints([trailingConstraint,leadingConstraint,topSpaceConstraint])
@@ -168,7 +169,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         for(var i=0;i<rowsCount;i++){
             lastAddedRow = createRow(container,previousRow:lastAddedRow,row:i)
         }
-        let bottomSpaceConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastAddedRow!, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: lastRowPadding)
+        let bottomSpaceConstraint = container*<^>(lastAddedRow!,lastRowPadding)
         container.addConstraint(bottomSpaceConstraint)
     }
     
@@ -183,15 +184,15 @@ public class BTNavigationExtendedPanel: UIViewController {
             }else{
                 prev = previousRow
             }
-            let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: prev, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: rowsPadding)
+            let topSpaceToPreviousRow = view*><>(prev,rowsPadding)
             container.addConstraint(topSpaceToPreviousRow)
             
         }else{
-            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: firstRowPadding)
+            let topSpaceToSuperview = view<^>(container,firstRowPadding)
             container.addConstraint(topSpaceToSuperview)
         }
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
+        let trailingConstraint = view<><(container,rowsHorizontalMargin)
+        let leadingConstraint = view<<>(container,rowsHorizontalMargin,NSLayoutRelation.GreaterThanOrEqual)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
@@ -209,7 +210,7 @@ public class BTNavigationExtendedPanel: UIViewController {
             buttons[i].createView(rowView,panel:self,buttonPadding:buttonsHorizontalPadding,imagesPadding:imagesPadding, previousButton: lastButtonView,titleFont:buttonsFont,titleColor:buttonsTitleColor)
             lastButtonView = buttons[i].view
         }
-        let trailingConstraint = NSLayoutConstraint(item: rowView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: lastButtonView!, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
+        let trailingConstraint = rowView<>>(lastButtonView!,0)
 
         rowView.addConstraint(trailingConstraint)
     }
@@ -218,9 +219,9 @@ public class BTNavigationExtendedPanel: UIViewController {
         let view = UIView()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
-        let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastViewAdded, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: separatorTopPadding)
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
+        let topSpaceToPreviousRow = view*><>(lastViewAdded,separatorTopPadding)
+        let trailingConstraint = container<>>(view,rowsHorizontalMargin)
+        let leadingConstraint = view<<>(container,rowsHorizontalMargin)
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 50)
         container.addConstraints([topSpaceToPreviousRow,trailingConstraint,leadingConstraint])
         let leadingLine = createSeparatorLine(view, titleLabel: nil)
@@ -236,11 +237,11 @@ public class BTNavigationExtendedPanel: UIViewController {
         view.backgroundColor = separatorColor
         container.addSubview(view)
         if let titleLabel = titleLabel{
-            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: titleHorizontalmargin)
-            let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
+            let leadingConstraint = view><>(titleLabel,titleHorizontalmargin)
+            let trailingConstraint = container<>>(view,rowsHorizontalMargin)
             container.addConstraints([leadingConstraint,trailingConstraint])
         }else{
-            let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
+            let leadingConstraint = view<<>(container,rowsHorizontalMargin)
             container.addConstraint(leadingConstraint)
         }
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 1)
@@ -257,9 +258,9 @@ public class BTNavigationExtendedPanel: UIViewController {
         label.textColor = separatorTitleColor
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(label)
-        let topConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
-        let bottomConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 5)
-        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: previousLine, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: titleHorizontalmargin)
+        let topConstraint = label<^>(container,5)
+        let bottomConstraint = container*<^>(label,5)
+        let leadingConstraint = label><>(previousLine,titleHorizontalmargin)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         let centerYConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
         container.addConstraints([topConstraint,bottomConstraint,leadingConstraint,centerXConstraint,centerYConstraint])

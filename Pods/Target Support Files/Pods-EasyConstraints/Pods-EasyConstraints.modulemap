@@ -1,0 +1,6 @@
+framework module EasyConstraints {
+  umbrella header "Pods-EasyConstraints-umbrella.h"
+
+  export *
+  module * { export * }
+}

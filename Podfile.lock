@@ -1,0 +1,10 @@
+PODS:
+  - EasyConstraints (0.1.3)
+
+DEPENDENCIES:
+  - EasyConstraints (~> 0.1)
+
+SPEC CHECKSUMS:
+  EasyConstraints: 86d0b3d5e02f8419abab538bfbcf604f1100cae3
+
+COCOAPODS: 0.36.3
