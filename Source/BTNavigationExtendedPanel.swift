@@ -61,7 +61,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     internal var buttonsHorizontalPadding:CGFloat = 5
     internal var rowsPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
-    internal var fristRowPadding:CGFloat = 10
+    internal var firstRowPadding:CGFloat = 10
     
     
     internal var startHeight:CGFloat = 0
@@ -161,7 +161,7 @@ public class BTNavigationExtendedPanel: UIViewController {
             container.addConstraint(topSpaceToPreviousRow)
             
         }else{
-            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: fristRowPadding)
+            let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: firstRowPadding)
             container.addConstraint(topSpaceToSuperview)
         }
         let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
