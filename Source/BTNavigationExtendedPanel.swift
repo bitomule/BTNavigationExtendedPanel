@@ -20,7 +20,7 @@ public struct BTRow {
 
 public class BTNavigationExtendedPanel: UIViewController {
     
-    public class func show(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
+    public class func create(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -35,10 +35,14 @@ public class BTNavigationExtendedPanel: UIViewController {
             vc.separatorTitleColor = separatorTitleColor
             vc.separatorColor = separatorColor
             vc.delegate = delegate
-            navigationController.presentViewController(vc, animated: true, completion: nil)
             return vc
         }
+        println("Can't find navigation controller")
         return nil
+    }
+    
+    public func show(callback:(()->Void)? = nil){
+        presenterNavigationController.presentViewController(self, animated: true, completion: callback)
     }
     
     public func hide(callback:(()->Void)? = nil){

@@ -13,6 +13,11 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
     var panel:BTNavigationExtendedPanel!
 
     @IBAction func showButtonPressed(sender: AnyObject) {
+        panel.show()
+    }
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         let button00 = BTButton(title: "Button 1", image: UIImage(named: "sampleimage")!, enabledImage: UIImage(named: "sampleimage_selected")!)
         let button01 = BTButton(title: "Button 2", image: UIImage(named: "sampleimage")!)
@@ -24,14 +29,8 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
         
         let row1 = BTRow(buttons:[button00,button01,button02],title:nil)
         let row2 = BTRow(buttons:[button10,button11,button12],title:"Row 2")
-
-        panel = BTNavigationExtendedPanel.show(self, delegate: self, buttonRows: [row1,row2], buttonsTitleColor: UIColor.whiteColor(), separatorTitleColor: UIColor.whiteColor(), separatorColor: UIColor.whiteColor())
-    }
         
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        panel = BTNavigationExtendedPanel.create(self, delegate: self, buttonRows: [row1,row2], buttonsTitleColor: UIColor.whiteColor(), separatorTitleColor: UIColor.whiteColor(), separatorColor: UIColor.whiteColor())
     }
     
     // MARK: - BTNavigationExtendedPanelDelegate
