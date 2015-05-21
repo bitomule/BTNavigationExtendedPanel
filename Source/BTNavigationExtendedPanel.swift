@@ -41,7 +41,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         return nil
     }
     
-    func hide(callback:(()->Void)? = nil){
+    public func hide(callback:(()->Void)? = nil){
         self.dismissViewControllerAnimated(true, completion: callback)
     }
     
