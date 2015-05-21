@@ -1,6 +1,6 @@
 //
 //  SampleViewController.swift
-//  BTNavigationExtendedPanel
+//  BTNavigationExtendedPanelhttps://github.com/bitomule/BTNavigationExtendedPanel.git
 //
 //  Created by David Collado Sela on 20/5/15.
 //  Copyright (c) 2015 David Collado Sela. All rights reserved.
