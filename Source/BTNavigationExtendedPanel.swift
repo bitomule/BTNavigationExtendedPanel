@@ -16,6 +16,10 @@ public struct BTButtonIndexPath {
 public struct BTRow {
     public var buttons:[BTButton]
     public var title:String?
+    public init(buttons:[BTButton],title:String?) {
+        self.buttons = buttons
+        self.title = title
+    }
 }
 
 public class BTNavigationExtendedPanel: UIViewController {
