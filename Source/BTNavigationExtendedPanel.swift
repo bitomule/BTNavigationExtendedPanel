@@ -11,6 +11,10 @@ import UIKit
 public struct BTButtonIndexPath {
     public var row = 0
     public var index = 0
+    public init(row:Int,index:Int) {
+        self.row = row
+        self.index = index
+    }
 }
 
 public struct BTRow {
@@ -54,6 +58,23 @@ public class BTNavigationExtendedPanel: UIViewController {
     public func hide(callback:(()->Void)? = nil){
         self.dismissViewControllerAnimated(true, completion: callback)
     }
+    
+    public func setButtonOnAtIndex(index:BTButtonIndexPath,on:Bool){
+        let row = buttonRows[index.row]
+        let button = row.buttons[index.index]
+        if(on){
+            button.turnOn()
+        }else{
+            button.turnOff()
+        }
+    }
+    
+    public func setButtonTitleAtIndex(index:BTButtonIndexPath,title:String){
+        let row = buttonRows[index.row]
+        let button = row.buttons[index.index]
+        button.updateTitle(title)
+    }
+    
     
     let manager = BTTransitionManager()
     var viewContainer: UIView!

@@ -12,6 +12,7 @@ public class BTButton:NSObject{
     var title:String
     var image:UIImage
     var enabledImage:UIImage?
+    var togglesImage:Bool = true
     var indexPath:BTButtonIndexPath
     var view:UIView!
     var imageView:UIImageView!
@@ -20,11 +21,12 @@ public class BTButton:NSObject{
     private var on = false
     private var panel:BTNavigationExtendedPanel!
     
-    public init (title:String,image:UIImage,enabledImage:UIImage?=nil){
+    public init (title:String,image:UIImage,enabledImage:UIImage?=nil,togglesImage:Bool = true){
         self.title = title
         self.image = image
         self.indexPath = BTButtonIndexPath(row: 0,index: 0)
         self.enabledImage = enabledImage
+        self.togglesImage = togglesImage
     }
     
     internal func turnOn(){
@@ -37,6 +39,10 @@ public class BTButton:NSObject{
     internal func turnOff(){
         on = false
         imageView.image = image
+    }
+    
+    internal func updateTitle(title:String){
+        self.titleLabel.text = title
     }
     
     internal var titlePadding:CGFloat = 5
