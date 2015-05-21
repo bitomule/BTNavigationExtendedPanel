@@ -60,7 +60,8 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     
     internal var buttonsHorizontalPadding:CGFloat = 5
-    internal var rowsPadding:CGFloat = 10
+    internal var rowsPadding:CGFloat = 5
+    internal var separatorTopPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
     internal var firstRowPadding:CGFloat = 10
     internal var imagesPadding:CGFloat = 5
@@ -194,7 +195,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         let view = UIView()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
-        let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastViewAdded, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: rowsPadding)
+        let topSpaceToPreviousRow = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastViewAdded, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: separatorTopPadding)
         let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
         let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 50)
