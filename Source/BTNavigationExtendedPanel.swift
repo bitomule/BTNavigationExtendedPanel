@@ -61,6 +61,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     internal var buttonsHorizontalPadding:CGFloat = 5
     internal var rowsPadding:CGFloat = 0
+    internal var rowsHorizontalMargin:CGFloat = 10
     internal var separatorTopPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
     internal var firstRowPadding:CGFloat = 10
@@ -167,8 +168,8 @@ public class BTNavigationExtendedPanel: UIViewController {
             let topSpaceToSuperview = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: firstRowPadding)
             container.addConstraint(topSpaceToSuperview)
         }
-        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsPadding)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsPadding)
+        let trailingConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: rowsHorizontalMargin)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: rowsHorizontalMargin)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
         createButtonsForRow(row,rowView:view)
