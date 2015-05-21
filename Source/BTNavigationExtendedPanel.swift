@@ -60,7 +60,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     
     internal var buttonsHorizontalPadding:CGFloat = 5
-    internal var rowsPadding:CGFloat = 5
+    internal var rowsPadding:CGFloat = 0
     internal var separatorTopPadding:CGFloat = 10
     internal var lastRowPadding:CGFloat = 10
     internal var firstRowPadding:CGFloat = 10
