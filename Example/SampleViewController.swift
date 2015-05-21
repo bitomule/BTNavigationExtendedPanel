@@ -34,7 +34,7 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
         // Do any additional setup after loading the view.
     }
     
-    // MARK: - Delegate
+    // MARK: - BTNavigationExtendedPanelDelegate
     
     func buttonPressed(index:BTButtonIndexPath){
         println("Row:\(index.row), Index: \(index.index)")

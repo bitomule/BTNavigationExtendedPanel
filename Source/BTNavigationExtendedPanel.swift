@@ -9,13 +9,13 @@
 import UIKit
 
 public struct BTButtonIndexPath {
-    var row = 0
-    var index = 0
+    public var row = 0
+    public var index = 0
 }
 
 public struct BTRow {
-    var buttons:[BTButton]
-    var title:String?
+    public var buttons:[BTButton]
+    public var title:String?
 }
 
 public class BTNavigationExtendedPanel: UIViewController {
