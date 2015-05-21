@@ -47,7 +47,6 @@ public class BTButton:NSObject{
     internal func createView(container:UIView,panel:BTNavigationExtendedPanel,buttonPadding:CGFloat,previousButton:UIView?,titleFont:UIFont,titleColor:UIColor)->UIView{
         self.panel = panel
         view = UIView()
-        view.backgroundColor = UIColor.blackColor()
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         self.imageView = createImage(view)
