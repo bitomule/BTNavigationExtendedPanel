@@ -38,6 +38,7 @@ public class BTNavigationExtendedPanel: UIViewController {
             vc.buttonsTitleColor = buttonsTitleColor
             vc.separatorTitleColor = separatorTitleColor
             vc.buttonsHorizontalPadding = buttonsHorizontalPadding
+            vc.imagesPadding = buttonImagesHorizontalPadding
             vc.separatorColor = separatorColor
             vc.delegate = delegate
             return vc
