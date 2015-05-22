@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/bitomule/BTNavigationExtendedPanel.git", :tag => "0.2.1" }
 
   s.source_files = 'Source/*.swift'
-  s.dependency 'SocketRocket', '~> 0.1.0'
+  s.dependency 'EasyConstraints', '~> 0.1.0'
   s.requires_arc = true
 
 end
