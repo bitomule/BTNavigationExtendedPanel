@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */; };
-		419171601B0C9F4200ADA3EE /* BTTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */; };
 		419171621B0CBACB00ADA3EE /* BTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419171611B0CBACB00ADA3EE /* BTButton.swift */; };
 		419171661B0CC31900ADA3EE /* sampleimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 419171651B0CC31900ADA3EE /* sampleimage.png */; };
 		419171681B0CCFD200ADA3EE /* sampleimage_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 419171671B0CCFD200ADA3EE /* sampleimage_selected.png */; };
@@ -36,7 +35,6 @@
 /* Begin PBXFileReference section */
 		249B1DBF18C453D7B89D4D30 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationExtendedPanel.swift; sourceTree = "<group>"; };
-		4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTransitionManager.swift; sourceTree = "<group>"; };
 		419171611B0CBACB00ADA3EE /* BTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTButton.swift; sourceTree = "<group>"; };
 		419171651B0CC31900ADA3EE /* sampleimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleimage.png; sourceTree = "<group>"; };
 		419171671B0CCFD200ADA3EE /* sampleimage_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sampleimage_selected.png; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				4191715D1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift */,
-				4191715F1B0C9F4200ADA3EE /* BTTransitionManager.swift */,
 				419171611B0CBACB00ADA3EE /* BTButton.swift */,
 				419171691B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift */,
 			);
@@ -310,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				41FA068F1B0C741200F905C8 /* AppDelegate.swift in Sources */,
-				419171601B0C9F4200ADA3EE /* BTTransitionManager.swift in Sources */,
 				4191715E1B0C9B3F00ADA3EE /* BTNavigationExtendedPanel.swift in Sources */,
 				41FA06981B0C74B500F905C8 /* SampleViewController.swift in Sources */,
 				4191716A1B0CEBA600ADA3EE /* BTNavigationExtendedPanelDelegate.swift in Sources */,

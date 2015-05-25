@@ -32,9 +32,6 @@ public class BTNavigationExtendedPanel: UIViewController {
     public class func create(presenter:UIViewController,delegate:BTNavigationExtendedPanelDelegate,buttonRows:[BTRow],buttonsHorizontalPadding:CGFloat = 5,buttonImagesHorizontalPadding:CGFloat = 5,buttonsFont:UIFont = UIFont.systemFontOfSize(15),separatorsFont:UIFont = UIFont.systemFontOfSize(15),buttonsTitleColor:UIColor = UIColor.blackColor(),separatorTitleColor:UIColor = UIColor.blackColor(),separatorColor:UIColor = UIColor.blackColor())-> BTNavigationExtendedPanel?{
         if let navigationController = presenter.navigationController{
             let vc = BTNavigationExtendedPanel()
-            vc.modalPresentationStyle = UIModalPresentationStyle.Custom
-            vc.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-            vc.transitioningDelegate = vc.manager
             vc.presenterNavigationController = navigationController
             vc.rowsCount = buttonRows.count
             vc.buttonRows = buttonRows
@@ -52,12 +49,48 @@ public class BTNavigationExtendedPanel: UIViewController {
         return nil
     }
     
+    private var displayed = false
+    
+    private var inTime = 0.5
+    private var outTime = 0.3
+    
     public func show(callback:(()->Void)? = nil){
-        presenterNavigationController.presentViewController(self, animated: true, completion: callback)
+        displayed = true
+        
+        self.willMoveToParentViewController(presenterNavigationController)
+        presenterNavigationController.view.addSubview(self.view)
+        self.didMoveToParentViewController(presenterNavigationController)
+        
+        let animation = CABasicAnimation(keyPath: "bounds.size.height")
+        animation.duration = inTime
+        animation.fromValue = 0
+        animation.toValue = self.startHeight
+        animation.fillMode = kCAFillModeForwards
+        animation.removedOnCompletion = false
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.645, 0.045, 0.355, 1)
+        animation.delegate = self
+        self.viewContainer.layer.addAnimation(animation, forKey: "scaleDown")
     }
     
-    public func hide(callback:(()->Void)? = nil){
-        self.dismissViewControllerAnimated(true, completion: callback)
+    public func hide(){
+        displayed = false
+        self.viewContainer.layer.removeAllAnimations()
+        
+        let animation = CABasicAnimation(keyPath: "bounds.size.height")
+        animation.duration = outTime
+        animation.fromValue = self.startHeight
+        animation.toValue = 0
+        animation.fillMode = kCAFillModeForwards
+        animation.removedOnCompletion = false
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.645, 0.045, 0.355, 1)
+        animation.delegate = self
+        self.viewContainer.layer.addAnimation(animation, forKey: "scaleUp")
+    }
+    
+    override public func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        if(!displayed){
+            self.view.removeFromSuperview()
+        }
     }
     
     public func setButtonOnAtIndex(index:BTButtonIndexPath,on:Bool){
@@ -77,7 +110,6 @@ public class BTNavigationExtendedPanel: UIViewController {
     }
     
     
-    let manager = BTTransitionManager()
     var viewContainer: UIView!
     
     
@@ -120,7 +152,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     }
     
     func viewTapped(){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        hide()
     }
     
     func ignoreTapInContainer(){
