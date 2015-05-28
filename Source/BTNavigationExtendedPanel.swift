@@ -87,6 +87,10 @@ public class BTNavigationExtendedPanel: UIViewController {
         self.viewContainer.layer.addAnimation(animation, forKey: "scaleUp")
     }
     
+    public func isExpanded()->Bool{
+        return displayed
+    }
+    
     override public func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
         if(!displayed){
             self.view.removeFromSuperview()
