@@ -143,7 +143,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         setAnchorToTop()
         matchNavigationBarColor()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "navigationControllerChange", name: "UINavigationControllerDidShowViewControllerNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "navigationControllerChange", name: "UINavigationControllerWillShowViewControllerNotification", object: nil)
     }
     
     func navigationControllerChange(){
