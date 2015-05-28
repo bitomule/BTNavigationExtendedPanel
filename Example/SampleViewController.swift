@@ -33,11 +33,6 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
         panel = BTNavigationExtendedPanel.create(self, delegate: self, buttonRows: [row1,row2], buttonsTitleColor: UIColor.whiteColor(), separatorTitleColor: UIColor.whiteColor(), separatorColor: UIColor.whiteColor())
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        panel.hide()
-    }
-    
     // MARK: - BTNavigationExtendedPanelDelegate
     
     func buttonPressed(index:BTButtonIndexPath){

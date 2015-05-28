@@ -142,6 +142,16 @@ public class BTNavigationExtendedPanel: UIViewController {
         setFrame()
         setAnchorToTop()
         matchNavigationBarColor()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "navigationControllerChange", name: "UINavigationControllerDidShowViewControllerNotification", object: nil)
+    }
+    
+    func navigationControllerChange(){
+        hide()
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     private func addGestureRecognizers(){
