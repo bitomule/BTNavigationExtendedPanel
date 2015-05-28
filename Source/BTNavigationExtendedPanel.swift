@@ -139,6 +139,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         createViewContainer()
         addGestureRecognizers()
         startHeight = viewContainer.bounds.height
+        setFrame()
         setAnchorToTop()
         matchNavigationBarColor()
     }
@@ -161,13 +162,19 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private var topSpaceConstraint: NSLayoutConstraint!
     
+    private func setFrame(){
+        let y:CGFloat
+        if(UIApplication.sharedApplication().statusBarHidden){
+            y = presenterNavigationController.navigationBar.bounds.height - 1
+        }else{
+            y = presenterNavigationController.navigationBar.bounds.height + UIApplication.sharedApplication().statusBarFrame.size.height - 1
+        }
+        view.frame = CGRect(x: 0, y: y, width: presenterNavigationController.view.bounds.width, height: presenterNavigationController.view.bounds.height)
+    }
+    
     private func setAnchorToTop(){
         viewContainer.layer.anchorPoint = CGPointMake(0.5, 0);
         topSpaceConstraint.constant = startHeight * -0.5
-        topSpaceConstraint.constant = topSpaceConstraint.constant + presenterNavigationController.navigationBar.bounds.height
-        if(!UIApplication.sharedApplication().statusBarHidden){
-           topSpaceConstraint.constant = topSpaceConstraint.constant + UIApplication.sharedApplication().statusBarFrame.size.height
-        }
     }
     
     private var presenterNavigationController:UINavigationController!
