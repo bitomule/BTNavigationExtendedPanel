@@ -147,6 +147,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     private func addGestureRecognizers(){
         let tapGesture = UITapGestureRecognizer(target: self, action: "viewTapped")
         self.view.addGestureRecognizer(tapGesture)
+        self.presenterNavigationController.navigationBar.addGestureRecognizer(tapGesture)
         
         let ignoreTapInContainer = UITapGestureRecognizer(target: self, action: "ignoreTapInContainer")
         viewContainer.addGestureRecognizer(ignoreTapInContainer)
