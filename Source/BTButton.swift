@@ -52,6 +52,13 @@ public class BTButton:NSObject{
         }
     }
     
+    internal func updateImage(image:UIImage){
+        self.image = image
+        if let imageView = imageView{
+            imageView.image = image
+        }
+    }
+    
     internal var titlePadding:CGFloat = 5
     internal var imagesPadding:CGFloat = 5
     internal var verticalImagesPadding:CGFloat = 5

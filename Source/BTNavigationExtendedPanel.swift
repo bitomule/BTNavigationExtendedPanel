@@ -113,6 +113,12 @@ public class BTNavigationExtendedPanel: UIViewController {
         button.updateTitle(title)
     }
     
+    public func setButtonImageAtIndex(index:BTButtonIndexPath,image:UIImage){
+        let row = buttonRows[index.row]
+        let button = row.buttons[index.index]
+        button.updateImage(image)
+    }
+    
     
     var viewContainer: UIView!
     
