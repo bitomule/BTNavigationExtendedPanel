@@ -69,7 +69,7 @@ public class BTButton:NSObject{
         self.panel = panel
         self.imagesPadding = imagesPadding
         view = UIView()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         self.imageView = createImage(view)
         self.titleLabel = createTitleLabel(view,imageView:imageView)
@@ -96,7 +96,7 @@ public class BTButton:NSObject{
         }else{
             imageView = UIImageView(image: image)
         }
-        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(imageView)
         let leftConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: imagesPadding)
         let rightConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: imagesPadding)
@@ -109,7 +109,7 @@ public class BTButton:NSObject{
     
     private func createTitleLabel(container:UIView,imageView:UIImageView)->UILabel{
         let label = UILabel()
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(label)
         label.text = self.title
         label.textColor = UIColor.whiteColor()
@@ -125,7 +125,7 @@ public class BTButton:NSObject{
     
     private func createButton(container:UIView)-> UIButton{
         let button = UIButton()
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(button)
         let leftConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: button, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
         let rightConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)

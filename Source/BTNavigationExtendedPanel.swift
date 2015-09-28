@@ -45,7 +45,7 @@ public class BTNavigationExtendedPanel: UIViewController {
             vc.delegate = delegate
             return vc
         }
-        println("Can't find navigation controller")
+        print("Can't find navigation controller")
         return nil
     }
     
@@ -91,7 +91,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         return displayed
     }
     
-    override public func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if(!displayed){
             self.view.removeFromSuperview()
         }
@@ -204,7 +204,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     private func matchNavigationBarColor(){
         if(presenterNavigationController.navigationBar.translucent){
             viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
-            println("Colors won't match as navigationBar is translucent")
+            print("Colors won't match as navigationBar is translucent")
         }else{
             viewContainer.backgroundColor = presenterNavigationController.navigationBar.barTintColor
         }
@@ -212,7 +212,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createViewContainer(){
         viewContainer = UIView()
-        viewContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
+        viewContainer.translatesAutoresizingMaskIntoConstraints = false
         viewContainer.clipsToBounds = true
         let trailingConstraint = self.view<>>(viewContainer,0)
         let leadingConstraint = self.view<<>(viewContainer,0)
@@ -236,7 +236,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createRow(container:UIView,previousRow:UIView?,row:Int)->UIView{
         let view = UIView()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         if let previousRow = previousRow{
             var prev:UIView!
@@ -252,7 +252,6 @@ public class BTNavigationExtendedPanel: UIViewController {
             let topSpaceToSuperview = view<^>(container,firstRowPadding)
             container.addConstraint(topSpaceToSuperview)
         }
-        let trailingConstraint = view<><(container,rowsHorizontalMargin)
         let leadingConstraint = view<<>(container,rowsHorizontalMargin,NSLayoutRelation.GreaterThanOrEqual)
         let centerXConstraint = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         container.addConstraints([leadingConstraint,leadingConstraint,centerXConstraint])
@@ -278,23 +277,22 @@ public class BTNavigationExtendedPanel: UIViewController {
     
     private func createSeparator(row:Int,lastViewAdded:UIView,container:UIView)->UIView{
         let view = UIView()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         let topSpaceToPreviousRow = view*><>(lastViewAdded,separatorTopPadding)
         let trailingConstraint = container<>>(view,rowsHorizontalMargin)
         let leadingConstraint = view<<>(container,rowsHorizontalMargin)
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 50)
         container.addConstraints([topSpaceToPreviousRow,trailingConstraint,leadingConstraint])
         let leadingLine = createSeparatorLine(view, titleLabel: nil)
         let titleLabel = createSeparatorTitleLabel(view, previousLine: leadingLine)
         titleLabel.text = buttonRows[row].title
-        let trailingLine = createSeparatorLine(view, titleLabel: titleLabel)
+        createSeparatorLine(view, titleLabel: titleLabel)
         return view
     }
     
     private func createSeparatorLine(container:UIView,titleLabel:UIView?)->UIView{
         let view = UIView()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = separatorColor
         container.addSubview(view)
         if let titleLabel = titleLabel{
@@ -317,7 +315,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         let label = UILabel()
         label.font = separatorsFont
         label.textColor = separatorTitleColor
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(label)
         let topConstraint = label<^>(container,5)
         let bottomConstraint = container*<^>(label,5)

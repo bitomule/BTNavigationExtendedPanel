@@ -36,7 +36,7 @@ class SampleViewController: UIViewController,BTNavigationExtendedPanelDelegate {
     // MARK: - BTNavigationExtendedPanelDelegate
     
     func buttonPressed(index:BTButtonIndexPath){
-        println("Row:\(index.row), Index: \(index.index)")
+        print("Row:\(index.row), Index: \(index.index)")
         if(index.row == 0 && index.index == 1){
             panel.hide()
         }
