@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "BTNavigationExtendedPanel"
-  s.version      = "0.5.0"
+  s.version      = "0.5.1"
   s.summary      = "Custom UIView displayed under navigation bar."
 
   s.description  = <<-DESC
@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/bitomule/BTNavigationExtendedPanel.git", :tag => "0.5.0" }
+  s.source       = { :git => "https://github.com/bitomule/BTNavigationExtendedPanel.git", :tag => "0.5.1" }
 
   s.source_files = 'Source/*.swift'
-  s.dependency 'EasyConstraints', '~> 0.1.0'
+  s.dependency 'EasyConstraints', '~> 0.1.4'
   s.requires_arc = true
 
 end
