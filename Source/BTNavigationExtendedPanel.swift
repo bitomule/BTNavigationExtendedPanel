@@ -142,7 +142,7 @@ public class BTNavigationExtendedPanel: UIViewController {
     private var separatorTitleColor:UIColor!
     private var separatorColor:UIColor!
     
-    private var delegate:BTNavigationExtendedPanelDelegate!
+    weak private var delegate:BTNavigationExtendedPanelDelegate!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -199,7 +199,7 @@ public class BTNavigationExtendedPanel: UIViewController {
         topSpaceConstraint.constant = startHeight * -0.5
     }
     
-    private var presenterNavigationController:UINavigationController!
+    weak private var presenterNavigationController:UINavigationController!
     
     private func matchNavigationBarColor(){
         if(presenterNavigationController.navigationBar.translucent){

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol BTNavigationExtendedPanelDelegate{
+public protocol BTNavigationExtendedPanelDelegate:class{
     func buttonPressed(index:BTButtonIndexPath)
 }
